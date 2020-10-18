@@ -4,10 +4,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="display: flex; justify-content: space-between;">
     <div>
-        <div id="events">
-
+        <div>
+            State:
+            <div id="events"></div>
+        </div>
+        <br>
+        <br>
+        <div>
+            Responce:
+            <div id="responce"></div>
+        </div>
+    </div>
+    <div>
+        actions <br>
+        <div>
+            <button onclick="echo()">echo</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
@@ -26,23 +39,14 @@
             'echo', 
             (data) => {
               console.log(data); 
-              document.getElementById('events').innerHTML = String(data)
+              document.getElementById('responce').innerHTML = String(data)
               }
           );
-          
-          
-          
-          
-          
           function echo() {
             socket.emit(
               'echo', 'echo'
             )
           }
-          
-          
-          
-          
           socket.on(
             'disconnect', 
             function(){
